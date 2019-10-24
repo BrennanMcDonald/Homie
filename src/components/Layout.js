@@ -1,5 +1,6 @@
 import React from 'react'
 import Grid from './Grid'
+import ActionBar from './ActionBar';
 
 export default class Layout extends React.Component {
   constructor(props) {
@@ -12,29 +13,19 @@ export default class Layout extends React.Component {
   }
 
   makeid(length) {
-    var result           = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var result = '';
+    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
-       result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    for (var i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
     }
     return result;
   }
- 
+
   addElement() {
     var layout = this.state.layout;
     var id = this.makeid(5);
-    layout.push({i: id, x: 4, y: 0, w: 1, h: 2});
-    this.setState({
-      layout: layout,
-      selected: this.addToSelectQueue(id)
-    })
-  }
- 
-  addSpace() {
-    var layout = this.state.layout;
-    var id = "SP-"+this.makeid(5);
-    layout.push({i: id, x: 4, y: 0, w: 1, h: 2});
+    layout.push({ i: id, x: 0, y: 0, w: 2, h: 2 });
     this.setState({
       layout: layout,
       selected: this.addToSelectQueue(id)
@@ -51,9 +42,9 @@ export default class Layout extends React.Component {
       this.setState({
         layout: JSON.parse(json_in)
       })
-    } 
+    }
   }
-  
+
   layoutChangeHandler(layout) {
     this.setState({
       layout: layout
@@ -79,7 +70,7 @@ export default class Layout extends React.Component {
   }
 
   handleKeyPress = (event) => {
-    if(event.keyCode === 46) {
+    if (event.keyCode === 46) {
       this.deleteElement(this.state.selected.pop())
     } else if (event.keyCode === 27) {
       this.setState({
@@ -91,16 +82,15 @@ export default class Layout extends React.Component {
   render() {
     return (
       <div id="FocusHandlerWindow">
-        <button onClick={this.addElement.bind(this)}>+</button>
-        <button onClick={this.addSpace.bind(this)}>+ Space</button>
-        <button onClick={this.save.bind(this)}>Save</button>
-        <button onClick={this.load.bind(this)}>Loads</button>
-
+        <ActionBar
+          addElement={this.addElement.bind(this)}
+          save={this.save.bind(this)}
+          load={this.load.bind(this)} />
         <Grid
           onLayoutChange={this.layoutChangeHandler.bind(this)}
           layout={this.state.layout}
           selected={this.state.selected}
-          elementSelector={this.selectElement.bind(this)}/>
+          elementSelector={this.selectElement.bind(this)} />
       </div>
     )
   }
