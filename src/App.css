@@ -1,33 +1,51 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
+    height: 40vmin;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
 
 .App-link {
-  color: #09d3ac;
+    color: #09d3ac;
 }
 
 .react-grid-item {
-  border: solid 1px black;
+    border: solid 1px black;
 }
 
-.react-grid-space.react-grid-item  {
-  border:dotted 1px grey;
+.react-grid-space.react-grid-item {
+    border: dotted 1px grey;
 }
+
 .grid-selected {
-  border: solid 1px lightskyblue;
+    border: solid 1px lightskyblue;
+}
+
+.result-modal-wrapper {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.result-modal {
+    width: 50vw;
+    position: absolute;
+    left: 25vw;
+    top: 100px;
+    background-color: white;
+    padding: 25px;
+    box-sizing: border-box;
+    border-radius: 25px;
 }

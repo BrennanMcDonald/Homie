@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "js-beautify": "^1.10.2",
+    "pretty": "^2.0.0",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
     "react-grid-layout": "^0.16.6",
@@ -28,5 +30,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-react": "^7.16.0"
   }
 }
